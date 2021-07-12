@@ -1,0 +1,246 @@
+$background: #222;
+$defaultButtonWidth: 95px;
+$defaultButtonHeight: 83px;
+$defaultFontSize: 16px;
+$defaultBorderRadius: 10px;
+$defaultButtonMargin: 5px;
+
+@mixin defaultBorder {
+  border: 1px solid #fff;
+}
+@mixin defaultContainer {
+  height: fit-content;
+  @include defaultBorder();
+  border-radius: 10px;
+  margin: 40px;
+  padding: 10px;
+  background: #333;
+}
+
+@mixin defaultFelx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background: $background;
+}
+
+.body__container {
+  display: flex;
+}
+
+.vending-machine {
+  @include defaultContainer();
+  max-width: 512px;
+  min-width: 512px;
+  margin-right: 10px;
+}
+
+.raccoon-wallet {
+  @include defaultContainer();
+  max-width: 250px;
+  min-width: 250px;
+  display: inline-block;
+  margin-left: 0px;
+  position: sticky;
+  top: 20px;
+}
+
+.order--title,
+.wallet--title {
+  @include defaultBorder();
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+  border-radius: $defaultBorderRadius;
+  padding: 20px 10px;
+  margin-bottom: 10px;
+}
+
+.order--button__container {
+  @include defaultBorder();
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: $defaultBorderRadius;
+  padding: 5px;
+
+  .list-group-item:last-child {
+    margin: $defaultButtonMargin;
+  }
+
+  img {
+    border-radius: $defaultBorderRadius;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.order--button__box {
+  text-align: center;
+  border-radius: 4px;
+  margin: $defaultButtonMargin;
+  padding: 5px 5px;
+
+  .order--button {
+    width: $defaultButtonWidth;
+    height: $defaultButtonHeight;
+    border-radius: 7px;
+    background: #fff;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      background: #ff6347;
+    }
+
+    &--possible {
+      @extend .order--button;
+      background: rgba(158, 226, 0, 0.6);
+    }
+
+    &--possible:hover {
+      background: rgba(158, 226, 0, 0.8);
+    }
+  }
+
+  .order--price {
+    text-align: center;
+    padding-top: 5px;
+    font-weight: 600;
+  }
+}
+
+.operating--window__container {
+  @include defaultBorder();
+  border-radius: $defaultBorderRadius;
+  padding: 0 5px;
+  margin-top: 10px;
+  height: fit-content;
+
+  .form-group-div {
+    display: block;
+  }
+
+  .insert--money__form,
+  .operation--window__form {
+    padding: 5px;
+
+    .log__box {
+      @include defaultBorder();
+      border-radius: $defaultBorderRadius;
+      height: 300px;
+      background: #fff;
+      overflow: auto;
+    }
+  }
+  .insert--money__input {
+    width: 100%;
+    height: 80px;
+    padding-left: 50px;
+    padding-right: 30px;
+    font-size: 3rem;
+    text-align: right;
+  }
+
+  .insert--money__input::placeholder {
+    text-align: right;
+    font-size: 2rem;
+  }
+
+  .extra--money__button {
+    margin: $defaultButtonMargin;
+
+    button {
+      width: 100%;
+      height: 80px;
+      font-size: 2rem;
+    }
+  }
+
+  .operating--window {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    border: none;
+    background: #fff;
+    border-radius: $defaultBorderRadius;
+  }
+}
+
+.wallet--button__container {
+  @include defaultBorder();
+  border-radius: $defaultBorderRadius;
+  padding: 5px 0;
+}
+
+.wallet--button__box {
+  @include defaultFelx();
+  text-align: center;
+  background: none;
+  border: 0;
+  padding: 5px 10px;
+
+  .wallet--button {
+    width: 100%;
+    height: $defaultButtonHeight - 35px;
+    border-radius: $defaultBorderRadius;
+    margin-right: 10px;
+    font-weight: 600;
+    background: #fff;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    &:hover {
+      background: rgb(245, 255, 153);
+      transition: 0.2s;
+    }
+
+    &:active {
+      background: rgb(243, 255, 137);
+      transition: 0.2s;
+    }
+  }
+
+  .wallet--count {
+    @include defaultFelx();
+    @include defaultBorder();
+    width: 100%;
+    height: $defaultButtonHeight - 35px;
+    padding: 10px;
+    color: #fff;
+    border-radius: $defaultBorderRadius;
+    &--disabled {
+      border: #ff6347 1px solid;
+      color: #ff6347;
+    }
+  }
+}
+
+.wallet__box {
+  @include defaultBorder();
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-top: 10px;
+
+  .wallet--money__form {
+    padding: 5px;
+  }
+  .wallet--money__input {
+    width: 100%;
+    height: 80px;
+    font-size: 3rem;
+    text-align: right;
+  }
+
+  .wallet--money__input::placeholder {
+    text-align: right;
+    font-size: 2rem;
+  }
+}
